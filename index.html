@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#641f32">
+<title>HJ. HUDAYA & KAHARUDDIN — Wedding Photobooth</title>
+<style>
+:root{--wine:#641f32;--wine2:#8b4051;--cream:#fff9ef;--gold:#c9a66b;--sage:#899783;--ink:#34252a;--muted:#7b6a6d;--line:#e9d8bf}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 10% 0%,#fffdf8 0,#f6eee3 45%,#efe2d4 100%);color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+button,select,input{font:inherit}button{cursor:pointer}
+.top{padding:24px 16px 20px;text-align:center;background:linear-gradient(135deg,#4e1728,#762b40 55%,#4e1728);color:#fff8ec;border-bottom:3px solid var(--gold)}
+.eyebrow{font:11px/1.4 Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#e7d2a9}
+h1{font-weight:500;font-size:clamp(25px,5vw,43px);letter-spacing:.025em;margin:10px 0 7px}
+.subtitle{font:12px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#e9d9c4}
+.ornament{color:var(--gold);font-size:20px;margin:9px 0}
+.wrap{max-width:1100px;margin:auto;padding:18px 13px 40px}
+.intro{text-align:center;max-width:690px;margin:0 auto 20px;font-size:14px;line-height:1.7;color:#6f555b}
+.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:18px;align-items:start}
+.panel{background:#fffaf2d9;border:1px solid #e4d1b6;border-radius:18px;padding:16px;box-shadow:0 12px 35px #53302212}
+.panel h2{font-size:19px;font-weight:500;margin:0 0 13px;color:var(--wine)}
+label{display:block;font:12px Arial,sans-serif;color:#6d5558;margin:12px 0 6px}
+select,input[type=number]{width:100%;border:1px solid #ddc9b0;border-radius:10px;padding:11px;background:#fffdf8;color:var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+.btn{border:1px solid var(--gold);border-radius:999px;padding:10px 14px;background:#fffaf2;color:var(--wine);font:12px Arial,sans-serif;letter-spacing:.02em}
+.btn.primary{background:var(--wine);border-color:var(--wine);color:#fff7e9}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.status{font:12px/1.5 Arial,sans-serif;color:var(--muted);margin-top:10px;min-height:18px}
+.camera-box{background:#241b1e;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;display:grid;place-items:center}
+video{width:100%;height:100%;object-fit:cover;display:block}
+.camera-placeholder{position:absolute;color:#f8e9d0;text-align:center;padding:20px;font:13px/1.6 Arial,sans-serif}
+.preview-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.result-wrap{margin-top:18px}
+.result-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.result-title h2{margin:0}
+.output{display:flex;justify-content:center;align-items:flex-start;min-height:120px;padding:10px;background:#f1e5d5;border-radius:14px;overflow:auto}
+.canvas-holder{max-width:100%;text-align:center}
+canvas{max-width:100%;height:auto;display:block;box-shadow:0 8px 25px #39212626}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border:2px solid #e0c8a6;border-radius:8px;background:#eee}
+.small{font:11px/1.6 Arial,sans-serif;color:#806c6d}
+.frame-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.frame-choice{padding:9px 5px;border:1px solid #e2cdb0;border-radius:10px;background:#fffaf2;color:var(--wine);font:11px Arial,sans-serif;text-align:center}
+.frame-choice.active{background:#f0e1c8;border:2px solid var(--wine);padding:8px 4px}
+.swatch{display:block;height:35px;border-radius:6px;margin-bottom:6px;border:1px solid #fff;position:relative;overflow:hidden}
+.swatch:before{content:"✿  ❀";position:absolute;inset:7px 0;color:#d6b878;font-size:17px;text-shadow:0 1px #fff}
+footer{text-align:center;padding:18px;color:#7e6869;font:11px/1.7 Arial,sans-serif}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{padding:13px 10px 28px}.panel{padding:13px}.frame-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:360px){.row{grid-template-columns:1fr}.frame-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="eyebrow">The Wedding Celebration</div>
+  <h1>HJ. HUDAYA &amp; KAHARUDDIN</h1>
+  <div class="ornament">✦ ❀ ✦</div>
+  <div class="subtitle">A timeless love story · Wedding Photobooth</div>
+</header>
+<main class="wrap">
+  <p class="intro">Abadikan momen bahagia dalam bingkai floral bernuansa burgundy, ivory, sage, dan champagne gold. Izinkan kamera, pilih format foto, lalu buat kenangan yang bisa diunduh atau dibagikan.</p>
+  <div class="layout">
+    <section class="panel">
+      <h2>01 · Studio kamera</h2>
+      <div class="camera-box">
+        <video id="video" autoplay playsinline muted></video>
+        <div id="placeholder" class="camera-placeholder">Kamera belum dinyalakan.<br>Tekan <b>Aktifkan kamera</b> untuk mulai.</div>
+      </div>
+      <div class="btns">
+        <button class="btn primary" id="start">Aktifkan kamera</button>
+        <button class="btn" id="flip">Ganti kamera</button>
+        <button class="btn" id="fullscreen">Layar penuh</button>
+      </div>
+      <div class="row">
+        <div><label for="timer">Hitung mundur</label><select id="timer"><option value="3">3 detik</option><option value="5" selected>5 detik</option><option value="10">10 detik</option></select></div>
+        <div><label for="interval">Jeda antarfoto</label><select id="interval"><option value="2">2 detik</option><option value="3" selected>3 detik</option><option value="5">5 detik</option></select></div>
+      </div>
+      <div class="row">
+        <div><label for="mode">Format foto</label><select id="mode"><option value="single">1 foto · Single</option><option value="strip" selected>Strip · Vertikal</option><option value="collage">Kolase · 2×2</option></select></div>
+        <div><label for="count">Jumlah foto</label><select id="count"><option value="1">1 foto</option><option value="3" selected>3 foto</option><option value="4">4 foto</option></select></div>
+      </div>
+      <label for="filter">Filter kamera</label>
+      <select id="filter">
+        <option value="none">01 · Natural</option><option value="sepia">02 · Vintage Sepia</option><option value="bw">03 · Classic Mono</option><option value="warm">04 · Golden Hour</option><option value="rose">05 · Rose Petal</option><option value="sage">06 · Sage Dream</option><option value="soft">07 · Soft Glow</option><option value="contrast">08 · Editorial</option><option value="fade">09 · Retro Fade</option><option value="cool">10 · Cool Film</option><option value="cream">11 · Ivory Film</option><option value="berry">12 · Berry Romance</option>
+      </select>
+      <label>Pilih frame floral luxury</label>
+      <div class="frame-grid" id="frameGrid">
+        <button class="frame-choice active" data-frame="0"><span class="swatch" style="background:#641f32"></span>01 Rose Gold</button>
+        <button class="frame-choice" data-frame="1"><span class="swatch" style="background:#f6ead7"></span>02 Ivory Rose</button>
+        <button class="frame-choice" data-frame="2"><span class="swatch" style="background:#899783"></span>03 Sage Garden</button>
+        <button class="frame-choice" data-frame="3"><span class="swatch" style="background:#4d2733"></span>04 Burgundy</button>
+        <button class="frame-choice" data-frame="4"><span class="swatch" style="background:#dfc18f"></span>05 Champagne</button>
+        <button class="frame-choice" data-frame="5"><span class="swatch" style="background:#e9d9c3"></span>06 Vintage Lace</button>
+        <button class="frame-choice" data-frame="6"><span class="swatch" style="background:#6f7d67"></span>07 Botanical</button>
+        <button class="frame-choice" data-frame="7"><span class="swatch" style="background:#b9858c"></span>08 Blush Bloom</button>
+      </div>
+      <div class="btns"><button class="btn primary" id="shoot">Mulai foto</button><button class="btn" id="retake">Ulangi sesi</button></div>
+      <div id="status" class="status" role="status">Siap. Aktifkan kamera terlebih dahulu.</div>
+      <p class="small">Catatan: kamera hanya dapat diakses lewat HTTPS (GitHub Pages) atau localhost. Pilihan kamera depan/belakang bergantung dukungan browser dan perangkat.</p>
+    </section>
+    <section class="panel">
+      <div class="result-title"><h2>02 · Hasil photobooth</h2><span class="small">PNG high quality</span></div>
+      <div class="output"><div class="canvas-holder" id="canvasHolder"><div class="small">Hasil foto akan tampil di sini setelah sesi selesai.</div></div></div>
+      <div class="btns">
+        <button class="btn primary" id="download" disabled>Unduh PNG</button>
+        <button class="btn" id="share" disabled>Bagikan</button>
+      </div>
+      <div class="result-wrap">
+        <div class="result-title"><h2>03 · Galeri sesi</h2><button class="btn" id="clearGallery">Hapus galeri</button></div>
+        <div class="gallery" id="gallery"></div>
+        <p class="small">Galeri ini tersimpan sementara selama halaman masih terbuka. Unduh hasil agar tidak hilang saat halaman ditutup.</p>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>HJ. HUDAYA &amp; KAHARUDDIN · Wedding Photobooth<br>Made for a beautiful day, remembered forever ✦</footer>
+<script>
+const $=id=>document.getElementById(id);
+const video=$('video'), status=$('status'), placeholder=$('placeholder');
+let stream=null, facing='user', selectedFrame=0, shots=[], finalBlob=null, finalUrl=null, galleryUrls=[];
+const palettes=[
+ ['#641f32','#fff7e9','#c9a66b','#899783','#f0d9c0'],
+ ['#f6ead7','#fffaf0','#b99257','#a5ad98','#ead0c1'],
+ ['#899783','#f7f0df','#d5b878','#53664f','#e6cbb4'],
+ ['#4d2733','#f8efe0','#d5b16d','#7d8b75','#d7aeb0'],
+ ['#dfc18f','#fff9ee','#9a6a47','#829079','#fff0d6'],
+ ['#e9d9c3','#fffaf2','#b99b70','#8d8d78','#d5b5a9'],
+ ['#6f7d67','#fff5e5','#d3b77d','#465b48','#e8d3bd'],
+ ['#b9858c','#fff8ed','#d5b16d','#899783','#f0d5d0']
+];
+const filters={none:'none',sepia:'sepia(0.55) contrast(1.03)',bw:'grayscale(1) contrast(1.08)',warm:'sepia(.2) saturate(1.18) brightness(1.04)',rose:'sepia(.12) hue-rotate(320deg) saturate(1.12)',sage:'sepia(.12) hue-rotate(35deg) saturate(.8)',soft:'brightness(1.08) contrast(.9) saturate(.9)',contrast:'contrast(1.18) saturate(.95)',fade:'sepia(.2) contrast(.86) brightness(1.08)',cool:'hue-rotate(8deg) saturate(.82)',cream:'sepia(.22) brightness(1.05) saturate(.78)',berry:'sepia(.12) hue-rotate(320deg) saturate(1.3)'};
+function say(t){status.textContent=t}
+async function startCamera(){
+ try{
+  if(stream) stream.getTracks().forEach(t=>t.stop());
+  stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:facing},width:{ideal:1280},height:{ideal:960}}});
+  video.srcObject=stream; await video.play(); placeholder.style.display='none'; say('Kamera aktif. Pilih format dan tekan Mulai foto.');
+ }catch(e){placeholder.style.display='block';say('Kamera tidak bisa dibuka. Izinkan akses kamera dan pastikan situs dibuka lewat HTTPS. ('+(e.name||'error')+')')}
+}
+$('start').onclick=startCamera;
+$('flip').onclick=async()=>{facing=facing==='user'?'environment':'user';await startCamera()};
+$('fullscreen').onclick=async()=>{try{if(!document.fullscreenElement) await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){say('Mode layar penuh tidak didukung browser ini.')}};
+$('mode').onchange=()=>{if($('mode').value==='single')$('count').value='1';else if($('count').value==='1')$('count').value='3'};
+$('count').onchange=()=>{if($('count').value==='1')$('mode').value='single';else if($('mode').value==='single')$('mode').value='strip'};
+$('frameGrid').querySelectorAll('button').forEach(b=>b.onclick=()=>{selectedFrame=+b.dataset.frame;$('frameGrid').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b))});
+function wait(ms){return new Promise(r=>setTimeout(r,ms))}
+function capture(){
+ const c=document.createElement('canvas');c.width=video.videoWidth||1280;c.height=video.videoHeight||960;
+ const x=c.getContext('2d');x.filter=filters[$('filter').value]||'none';
+ if(facing==='user'){x.translate(c.width,0);x.scale(-1,1)}
+ x.drawImage(video,0,0,c.width,c.height);x.filter='none';return c;
+}
+$('shoot').onclick=async()=>{
+ if(!stream){say('Aktifkan kamera terlebih dahulu.');return}
+ if(!video.videoWidth){say('Kamera sedang siap-siap, coba lagi sebentar.');return}
+ $('shoot').disabled=true;shots=[];
+ const n=+$('count').value, countdown=+$('timer').value, gap=+$('interval').value;
+ try{
+  for(let i=0;i<n;i++){
+   for(let t=countdown;t>0;t--){say('Foto '+(i+1)+' dari '+n+' — bersiap '+t+'…');await wait(1000)}
+   shots.push(capture());say('Foto '+(i+1)+' dari '+n+' berhasil!');
+   if(i<n-1) await wait(gap*1000);
+  }
+  renderResult();say('Selesai! Hasil siap diunduh atau dibagikan.');
+ }catch(e){say('Ada kendala saat mengambil foto. Coba ulangi sesi.')}finally{$('shoot').disabled=false}
+};
+$('retake').onclick=()=>{shots=[];finalBlob=null;$('download').disabled=true;$('share').disabled=true;$('canvasHolder').innerHTML='<div class="small">Sesi direset. Tekan Mulai foto untuk mengambil ulang.</div>';say('Sesi direset.')};
+function roundedRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.closePath()}
+function flower(ctx,cx,cy,r,p){
+ ctx.save();for(let i=0;i<8;i++){ctx.save();ctx.translate(cx,cy);ctx.rotate(i*Math.PI/4);ctx.beginPath();ctx.ellipse(0,-r*.58,r*.32,r*.58,0,0,Math.PI*2);ctx.fillStyle=p[1];ctx.fill();ctx.strokeStyle=p[2];ctx.lineWidth=1.5;ctx.stroke();ctx.restore()}
+ ctx.beginPath();ctx.arc(cx,cy,r*.22,0,Math.PI*2);ctx.fillStyle=p[2];ctx.fill();ctx.restore()
+}
+function leaf(ctx,x,y,rot,p){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(22,-15,38,0);ctx.quadraticCurveTo(20,17,0,0);ctx.fillStyle=p[3];ctx.fill();ctx.strokeStyle=p[2];ctx.lineWidth=1;ctx.stroke();ctx.restore()}
+function drawFrame(ctx,w,h,frame,mode){
+ const p=palettes[frame];ctx.fillStyle=p[0];ctx.fillRect(0,0,w,h);
+ const margin=Math.round(w*.045), inner=Math.round(w*.035);
+ ctx.strokeStyle=p[2];ctx.lineWidth=Math.max(3,w*.004);ctx.strokeRect(margin,margin,w-2*margin,h-2*margin);
+ ctx.strokeStyle=p[1];ctx.lineWidth=Math.max(2,w*.002);ctx.strokeRect(margin+inner,margin+inner,w-2*(margin+inner),h-2*(margin+inner));
+ // Corner botanical flourishes
+ const corners=[[margin+inner+8,margin+inner+8,0],[w-margin-inner-8,margin+inner+8,Math.PI/2],[margin+inner+8,h-margin-inner-8,-Math.PI/2],[w-margin-inner-8,h-margin-inner-8,Math.PI]];
+ corners.forEach(([x,y,a])=>{leaf(ctx,x,y,a,p);leaf(ctx,x+10,y+10,a+1.1,p);flower(ctx,x,y,Math.max(13,w*.025),p);flower(ctx,x+(x<w/2?22:-22),y+(y<h/2?22:-22),Math.max(7,w*.014),p)});
+ // Tiny floral garland across top and bottom
+ for(let i=0;i<5;i++){let x=w*(.2+i*.15);flower(ctx,x,margin+inner+3,Math.max(5,w*.009),p);flower(ctx,x,h-margin-inner-3,Math.max(5,w*.009),p)}
+ const bandH=Math.max(66,w*.14);
+ ctx.fillStyle=p[0];ctx.fillRect(margin+inner, h-bandH-margin-inner, w-2*(margin+inner), bandH);
+ ctx.strokeStyle=p[2];ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(w*.2,h-bandH-margin-inner+4);ctx.lineTo(w*.8,h-bandH-margin-inner+4);ctx.stroke();
+ ctx.fillStyle=p[1];ctx.textAlign='center';ctx.textBaseline='middle';
+ ctx.font=`${Math.max(14,w*.032)}px Georgia`;ctx.fillText('HJ. HUDAYA & KAHARUDDIN',w/2,h-bandH*.56-margin-inner);
+ ctx.fillStyle=p[2];ctx.font=`${Math.max(10,w*.018)}px Arial`;ctx.fillText('THE WEDDING · FOREVER BEGINS',w/2,h-bandH*.25-margin-inner);
+ ctx.fillStyle=p[1];ctx.font=`${Math.max(10,w*.018)}px Georgia`;ctx.fillText('✦  ❀  ✦',w/2,h-bandH-margin-inner+bandH*.12);
+}
+function drawPhoto(ctx,img,x,y,w,h,filterName){
+ ctx.save();roundedRect(ctx,x,y,w,h,Math.min(12,w*.018));ctx.clip();
+ ctx.filter=filters[filterName]||'none';
+ const iw=img.width,ih=img.height,scale=Math.max(w/iw,h/ih),sw=w/scale,sh=h/scale,sx=(iw-sw)/2,sy=(ih-sh)/2;
+ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);ctx.filter='none';ctx.restore();
+ ctx.strokeStyle='#fff3dc';ctx.lineWidth=Math.max(3,w*.008);ctx.strokeRect(x,y,w,h);
+}
+function renderResult(){
+ const mode=$('mode').value,n=shots.length,frame=selectedFrame,p=palettes[frame];
+ let w=mode==='single'?900:mode==='collage'?900:600;
+ let h=mode==='single'?1150:mode==='collage'?1150:Math.round(w*(n===4?2.35:1.85));
+ const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');
+ drawFrame(ctx,w,h,frame,mode);
+ const pad=w*.095, top=h*.07, bottom=h*.18, gap=w*.025;
+ if(mode==='single'){
+  drawPhoto(ctx,shots[0],pad,top,w-2*pad,h-top-bottom-gap,$('filter').value);
+ }else if(mode==='strip'){
+  const available=h-top-bottom-gap-(n-1)*gap, ph=available/n, pw=w-2*pad;
+  shots.forEach((s,i)=>drawPhoto(ctx,s,pad,top+i*(ph+gap),pw,ph,$('filter').value));
+ }else{
+  const cols=2, rows=Math.ceil(n/2), pw=(w-2*pad-gap)/2, ph=(h-top-bottom-gap-(rows-1)*gap)/rows;
+  shots.forEach((s,i)=>drawPhoto(ctx,s,pad+(i%2)*(pw+gap),top+Math.floor(i/2)*(ph+gap),pw,ph,$('filter').value));
+ }
+ $('canvasHolder').innerHTML='';$('canvasHolder').appendChild(c);
+ c.toBlob(blob=>{finalBlob=blob;if(finalUrl)URL.revokeObjectURL(finalUrl);finalUrl=URL.createObjectURL(blob);$('download').disabled=false;$('share').disabled=false;addGallery(finalUrl)},'image/png');
+}
+function addGallery(url){const img=document.createElement('img');img.src=url;img.alt='Hasil photobooth';img.onclick=()=>{const a=document.createElement('a');a.href=url;a.download='wedding-photobooth.png';a.click()};$('gallery').prepend(img);galleryUrls.push(url)}
+$('download').onclick=()=>{if(!finalUrl)return;const a=document.createElement('a');a.href=finalUrl;a.download='HJ-Hudaya-Kaharuddin-Photobooth.png';document.body.appendChild(a);a.click();a.remove()};
+$('share').onclick=async()=>{
+ if(!finalBlob)return;
+ try{
+  const file=new File([finalBlob],'HJ-Hudaya-Kaharuddin-Photobooth.png',{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Wedding Photobooth',text:'HJ. HUDAYA & KAHARUDDIN'});}
+  else if(navigator.share){await navigator.share({title:'Wedding Photobooth',text:'HJ. HUDAYA & KAHARUDDIN',url:location.href});}
+  else {say('Bagikan langsung tidak didukung. Unduh PNG lalu bagikan dari galeri HP.')}
+ }catch(e){if(e.name!=='AbortError')say('Berbagi dibatalkan atau tidak didukung. Unduh PNG sebagai alternatif.')}
+};
+$('clearGallery').onclick=()=>{$('gallery').innerHTML='';galleryUrls.forEach(u=>URL.revokeObjectURL(u));galleryUrls=[];say('Galeri sesi dibersihkan.')};
+if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){$('start').disabled=true;say('Browser ini tidak mendukung akses kamera. Coba Chrome terbaru lewat HTTPS.')}
+</script>
+</body>
+</html>
